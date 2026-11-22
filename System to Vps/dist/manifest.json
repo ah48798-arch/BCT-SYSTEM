@@ -1,0 +1,42 @@
+{
+  "name": "BCT Educational Consulting & Training | بي سي تي للاستشارات التعليمية والتدريب",
+  "short_name": "BCT ERP",
+  "description": "Production Enterprise Management System for BCT Educational Consulting & Training",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F7FA",
+  "theme_color": "#154568",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/brand/BCT_Vertical_Mono_Navy.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "education"],
+  "shortcuts": [
+    {
+      "name": "Student CRM",
+      "short_name": "CRM",
+      "description": "Access Student CRM & Dossiers",
+      "url": "/crm"
+    },
+    {
+      "name": "Operational Pipeline",
+      "short_name": "Pipeline",
+      "description": "10-Stage Student Pipeline Kanban",
+      "url": "/pipeline"
+    },
+    {
+      "name": "Finance & Collections",
+      "short_name": "Finance",
+      "description": "Collections, Receipts & Solvency",
+      "url": "/finance"
+    }
+  ]
+}

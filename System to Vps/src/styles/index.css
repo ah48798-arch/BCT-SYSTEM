@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bct-navy: #154568;
+    --bct-dark: #10354F;
+    --bct-deep: #0B2436;
+    --bct-surface: #F5F7FA;
+    --bct-muted: #687787;
+    --bct-line: #E2E8F0;
+  }
+  
+  html[dir="rtl"],
+  html[dir="ltr"],
+  html {
+    font-family: 'Cairo', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  }
+
+  body, button, input, select, textarea {
+    font-family: 'Cairo', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  }
+
+  /* Prevent artificial letter spacing on Arabic text to preserve natural cursive stroke connections */
+  [dir="rtl"],
+  [lang="ar"],
+  :lang(ar) {
+    letter-spacing: normal !important;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ==========================================================================
+   BCT Enterprise Certified Print & PDF Export Stylesheet
+   ========================================================================== */
+
+@page {
+  size: A4 portrait;
+  margin: 10mm 10mm 12mm 10mm;
+}
+
+@media print {
+  /* Enforce exact background colors, graphics, badges, and borders in PDF and print preview */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  html {
+    background-color: #ffffff !important;
+    font-family: 'Cairo', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+    font-size: 10.5pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    font-family: 'Cairo', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Ensure all print content strictly preserves the original Cairo typography */
+  body, table, th, td, h1, h2, h3, h4, h5, h6, p, div, span, label, b, strong {
+    font-family: 'Cairo', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+  }
+
+  .font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  }
+
+  #root {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide all system navigation, navbar, sidebar, buttons, and website chrome */
+  nav,
+  aside,
+  header.site-header,
+  .print\:hidden,
+  .no-print,
+  button,
+  select,
+  input[type="date"] {
+    display: none !important;
+  }
+
+  /* Reset all overflow restrictions to prevent clipping */
+  div,
+  main,
+  section,
+  article {
+    overflow: visible !important;
+  }
+
+  /* Page break rules */
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .avoid-page-break,
+  .break-inside-avoid,
+  .print\:break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Headings must not be left orphaned at the bottom of a page */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* Tables: repeat headers on new pages & avoid splitting individual rows */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tbody {
+    display: table-row-group !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  td, th {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Eliminate trailing margins on last child to prevent trailing blank page */
+  .printable-document:last-child,
+  .printable-document > *:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
